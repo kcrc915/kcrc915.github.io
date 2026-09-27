@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CHANGE: browser tab title and search description -->
+  <title>Krishna Chaitanya Reddy Chitta | Ph.D. Student</title>
+  <meta name="description" content="Krishna Chaitanya Reddy Chitta — Ph.D. student in Computer Science at the University of Kansas.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============ THEME: change colors here ============ */
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f5f7fa;
+      --text: #1f2933;
+      --muted: #5f6b7a;
+      --border: #e3e8ee;
+      --accent: #0051ba;        /* main link / button color */
+      --accent-dark: #003d8f;
+      --radius: 10px;
+      --shadow: 0 2px 10px rgba(15, 30, 50, 0.06);
+      --max: 1000px;
+    }
+    body.dark {
+      --bg: #11161c;
+      --bg-alt: #171e26;
+      --text: #e6eaef;
+      --muted: #9aa6b4;
+      --border: #26303b;
+      --accent: #6ea8ff;
+      --accent-dark: #9cc3ff;
+      --shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+    body {
+      font-family: "Inter", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 16px;
+      transition: background .2s, color .2s;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+
+    /* ============ NAVBAR ============ */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .brand { font-weight: 700; font-size: 18px; color: var(--text); }
+    .brand:hover { text-decoration: none; }
+    .nav-links { display: flex; gap: 22px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--muted); font-weight: 500; font-size: 15px; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); text-decoration: none; }
+    .icon-btn {
+      background: none; border: 1px solid var(--border); color: var(--text);
+      border-radius: 8px; padding: 6px 10px; cursor: pointer; font-size: 15px;
+    }
+    .menu-toggle { display: none; }
+
+    /* ============ HERO / ABOUT ============ */
+    .hero { padding: 60px 0 50px; }
+    .hero-grid {
+      display: grid; grid-template-columns: 220px 1fr; gap: 40px; align-items: center;
+    }
+    .profile-pic {
+      width: 220px; height: 220px; border-radius: 50%;
+      object-fit: cover; border: 4px solid var(--bg-alt);
+      box-shadow: var(--shadow); background: var(--bg-alt);
+    }
+    .hero h1 {
+      font-family: "Merriweather", Georgia, serif;
+      font-size: 36px; line-height: 1.2; margin-bottom: 6px;
+    }
+    .hero .title { font-size: 18px; color: var(--muted); margin-bottom: 14px; }
+    .info-list { list-style: none; margin-bottom: 18px; color: var(--muted); font-size: 15px; }
+    .info-list li { margin: 3px 0; }
+    .bio { margin-bottom: 20px; max-width: 65ch; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn {
+      display: inline-block; padding: 9px 18px; border-radius: 8px;
+      font-weight: 600; font-size: 14px; border: 1px solid var(--accent);
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    body.dark .btn-primary { color: #0b1220; }
+    .btn-primary:hover { background: var(--accent-dark); text-decoration: none; }
+    .btn-outline { color: var(--accent); background: transparent; }
+    .btn-outline:hover { background: var(--bg-alt); text-decoration: none; }
+
+    /* ============ SECTIONS ============ */
+    section { padding: 56px 0; }
+    section.alt { background: var(--bg-alt); }
+    .section-title {
+      font-family: "Merriweather", Georgia, serif;
+      font-size: 26px; margin-bottom: 28px;
+      padding-bottom: 10px; border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+
+    /* Achievements grid */
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; }
+    .card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+      transition: transform .2s;
+    }
+    .card:hover { transform: translateY(-3px); }
+    .card img { width: 100%; height: 170px; object-fit: cover; background: var(--border); }
+    .card-body { padding: 14px 16px 18px; }
+    .card-body h3 { font-size: 16px; margin-bottom: 4px; }
+    .card-body p { font-size: 14px; color: var(--muted); }
+
+    /* Timeline (education / experience) */
+    .timeline { border-left: 2px solid var(--border); padding-left: 26px; }
+    .t-item { position: relative; margin-bottom: 30px; }
+    .t-item:last-child { margin-bottom: 0; }
+    .t-item::before {
+      content: ""; position: absolute; left: -33px; top: 6px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent); border: 2px solid var(--bg);
+    }
+    section.alt .t-item::before { border-color: var(--bg-alt); }
+    .t-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; }
+    .t-head h3 { font-size: 18px; }
+    .t-date { color: var(--muted); font-size: 14px; white-space: nowrap; }
+    .t-sub { color: var(--accent); font-weight: 500; margin-bottom: 6px; }
+    .t-item p, .t-item li { font-size: 15px; }
+    .t-item ul { padding-left: 18px; margin-top: 6px; }
+
+    /* Publications */
+    .pub {
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 18px 20px; margin-bottom: 16px;
+    }
+    .pub h3 { font-size: 17px; margin-bottom: 4px; }
+    .pub .authors { font-size: 14px; color: var(--muted); }
+    .pub .venue { font-size: 14px; font-style: italic; margin-bottom: 8px; }
+    .pub details summary { cursor: pointer; font-size: 14px; color: var(--accent); font-weight: 500; }
+    .pub details p { font-size: 14px; margin-top: 8px; color: var(--muted); }
+    .pub-links { display: flex; gap: 14px; margin-top: 10px; font-size: 14px; font-weight: 500; }
+    .me { font-weight: 700; color: var(--text); }
+
+    /* Teaching */
+    .teach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+    .teach {
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px;
+    }
+    .course-code {
+      display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .04em;
+      background: var(--bg-alt); color: var(--accent); padding: 2px 8px; border-radius: 5px; margin-bottom: 8px;
+    }
+    .teach h3 { font-size: 16px; margin-bottom: 6px; }
+    .teach p { font-size: 14px; color: var(--muted); margin-bottom: 8px; }
+
+    /* Skills */
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      font-size: 13px; padding: 5px 12px; border-radius: 20px;
+      background: var(--bg); border: 1px solid var(--border);
+    }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 28px 0; text-align: center; color: var(--muted); font-size: 14px; }
+    footer .socials { display: flex; justify-content: center; gap: 18px; margin-bottom: 8px; }
+
+    /* ============ MOBILE ============ */
+    @media (max-width: 760px) {
+      .menu-toggle { display: inline-block; }
+      .nav-links {
+        display: none; position: absolute; top: 64px; left: 0; right: 0;
+        flex-direction: column; gap: 0; background: var(--bg);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a { display: block; padding: 12px 20px; }
+      .nav-links .theme-li { padding: 10px 20px; }
+      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 24px; }
+      .profile-pic { width: 170px; height: 170px; margin: 0 auto; }
+      .btn-row { justify-content: center; }
+      .bio { margin-left: auto; margin-right: auto; }
+      .hero h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <header>
+    <nav class="container nav">
+      <a href="#about" class="brand">Krishna Chaitanya Reddy Chitta</a>
+      <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#experience">Research</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li class="theme-li"><button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ================= ABOUT / HERO ================= -->
+  <section class="hero" id="about">
+    <div class="container hero-grid">
+      <!-- CHANGE: put your photo at images/profile.jpg -->
+      <img src="C:\Users\krish\Downloads\KRISHNA CHAITANYA REDDY CHITTA.jpg" alt="Photo of Krishna Chaitanya Reddy Chitta" class="profile-pic">
+      <div>
+        <h1>Krishna Chaitanya Reddy Chitta</h1>
+        <p class="title">Ph.D. Candidate, Computer Science</p>
+        <ul class="info-list">
+          <li>🏛️ The University of Kansas</li>
+          <li>📍 Lawrence, Kansas</li>
+          <li>✉️ <a href="mailto:krishnachaitanya915@ku.edu">krishnachaitanya915@ku.edu</a></li>
+        </ul>
+        <p class="bio">
+          My research interests lie at the intersection of High-Performance Computing (HPC), computer systems, and intelligent resource management. My work focuses on understanding application performance, resource contention, workload characterization, and designing adaptive scheduling and resource-management techniques for parallel and cloud-native applications. I am particularly interested in multicore performance analysis, hardware performance counters, phase-aware workload characterization, interference prediction, and contention-aware scheduling, with the broader goal of improving the efficiency and predictability of HPC systems.
+        </p>
+        <p class="bio">
+          Alongside my research, I have experience as a Graduate Teaching Assistant (GTA) supporting courses in both Electrical Engineering & Computer Science and Mechanical Engineering at the University of Kansas. Teaching and mentoring students have strengthened my interest in making complex computing concepts approachable, and I have also worked with high-school students through KU engineering summer programs, helping introduce them to engineering and computing.
+        </p>
+        <div class="btn-row">
+          <a href="files/resume.pdf" class="btn btn-primary" target="_blank">Download Resume</a>
+          <a href="https://www.linkedin.com/in/krishna-chaitanya-reddy-chitta-667904230" class="btn btn-outline" target="_blank">LinkedIn</a>
+          <a href="https://github.com/your-username" class="btn btn-outline" target="_blank">GitHub</a>
+          <a href="https://scholar.google.com/citations?user=RXvqDuIAAAAJ&hl=en" class="btn btn-outline" target="_blank">Google Scholar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ACHIEVEMENTS ================= -->
+  <section class="alt" id="achievements">
+    <div class="container">
+      <h2 class="section-title">Achievements &amp; Recognition</h2>
+      <div class="cards">
+        <!-- Copy one .card block per achievement -->
+        <div class="card">
+          <img src="images/achievement1.jpg" alt="Achievement 1">
+          <div class="card-body">
+            <h3>Award or Achievement Title</h3>
+            <p>Short line on what it was and when.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="images/achievement2.jpg" alt="Achievement 2">
+          <div class="card-body">
+            <h3>Conference Presentation</h3>
+            <p>Presented at Conference Name, Month Year.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="images/achievement3.jpg" alt="Achievement 3">
+          <div class="card-body">
+            <h3>Thesis Defense</h3>
+            <p>Successfully defended M.S. thesis, Month Year.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EDUCATION ================= -->
+  <section id="education">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="timeline">
+        <div class="t-item">
+          <div class="t-head"><h3>Ph.D. in Computer Science</h3><span class="t-date">Aug 2024 – Present</span></div>
+          <div class="t-sub">The University of Kansas</div>
+          <p>Focus: High Performance Computing and AI/ML. Advisor: Dr. Hongyang Sun.</p>
+        </div>
+        <div class="t-item">
+          <div class="t-head"><h3>M.S. in Computer Science</h3><span class="t-date">Aug 2022 – May 2024</span></div>
+          <div class="t-sub">The University of Kansas · GPA: 3.76/4.00</div>
+          <p>Thesis: <a href="https://kuscholarworks.ku.edu/bitstreams/68510859-8a26-4bda-b5e0-a0088ab60191/download" target="_blank">"A Dynamic Resource Management Framework and Reconfiguration Strategies for Cloud-native Bulk Synchronous Parallel Applications"</a></p>
+        </div>
+        <div class="t-item">
+          <div class="t-head"><h3>B.Tech in Mechanical Engineering</h3><span class="t-date">2013 – 2017</span></div>
+          <div class="t-sub">Narasaraopeta Engieering College (JNTU-Kakinada) · Percentage: 73.89%</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PUBLICATIONS ================= -->
+  <section class="alt" id="publications">
+    <div class="container">
+      <h2 class="section-title">Publications</h2>
+
+      <!-- Copy one .pub block per paper -->
+      <div class="pub">
+        <h3>Assessing Processor Allocation Strategies for Online Scheduling of Moldable Task Graphs</h3>
+        <p class="authors">Mary Jeevana Pudota, <span class="me">Krishna Chaitanya Reddy Chitta</span>, Sai Rithvik Gundla, Hongyang Sun</p>
+        <p class="venue">2025 IEEE 32nd International Conference on High Performance Computing, Data, and Analytics (HiPC), pp. 119–129, December 2025</p>
+        <details>
+          <summary>Abstract</summary>
+          <p>In online scheduling of moldable task graphs, each task can run on a varying number of processors and is only revealed once its predecessors finish, so processor allocation must be decided without knowing future tasks. Prior work analyzed allocation algorithms theoretically through competitive ratios; this paper evaluates how those strategies actually perform in practice and how their fixed parameter settings affect makespan.</p>
+        </details>
+        <div class="pub-links">
+          <a href="https://ieeexplore.ieee.org/abstract/document/11433357/" target="_blank">IEEE Xplore</a>
+          <a href="https://kuscholarworks.ku.edu/bitstreams/8fc47773-951f-4287-8da8-061ec7a070c6/download" target="_blank">PDF</a>
+        </div>
+      </div>
+
+      <div class="pub">
+        <h3>A Dynamic Resource Management Framework and Reconfiguration Strategies for Cloud-native Bulk Synchronous Parallel Applications</h3>
+        <p class="authors"><span class="me">Krishna Chaitanya Reddy Chitta</span></p>
+        <p class="venue">M.S. Thesis, The University of Kansas</p>
+        <details>
+          <summary>Abstract</summary>
+          <p>BSP applications are increasingly deployed on shared, cloud-native platforms such as Kubernetes, where resource variability and workload imbalance across supersteps cause stragglers and longer execution times. Existing approaches use one static configuration for the whole run. This thesis builds a dynamic resource management framework and evaluates reconfiguration strategies that adapt resources as the workload changes.</p>
+        </details>
+        <div class="pub-links">
+          <a href="https://kuscholarworks.ku.edu/bitstreams/68510859-8a26-4bda-b5e0-a0088ab60191/download" target="_blank">PDF</a>
+          <a href="https://search.proquest.com/openview/9dcfbec4150b5b9b12a2cefc5ab69a64/1?pq-origsite=gscholar&amp;cbl=18750&amp;diss=y" target="_blank">ProQuest</a>
+          <a href="https://github.com/kcrc915/Kube_Gang_Scheduling-main" target="_blank">Code</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RESEARCH & EXPERIENCE ================= -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Research &amp; Experience</h2>
+      <div class="timeline">
+        <div class="t-item">
+          <div class="t-head"><h3>GEA Ambassador</h3><span class="t-date">Sep 2026 – Present</span></div>
+          <div class="t-sub">Graduate Engineering Association, The University of Kansas · Lawrence, KS</div>
+          <p>Represent KU's graduate engineering community and help prospective and current graduate students connect with programs, events and resources.</p>
+        </div>
+        <div class="t-item">
+          <div class="t-head"><h3>Graduate Teaching Assistant</h3><span class="t-date">Aug 2023 – Present</span></div>
+          <div class="t-sub">The University of Kansas · Lawrence, KS · Part-time</div>
+          <ul>
+            <li>EECS 130, Introduction to Computing (Python) (Jan 2026 – Present): support students learning Python through labs, assignments and grading.</li>
+            <li>EECS 581, Computer Science Capstone Project (Aug 2024 – May 2025, two semesters): oversaw student teams through the full project lifecycle using Agile methods and graded project work.</li>
+            <li>KU Engineering Summer Camp (Jun – Jul 2025): guided high-school students through hands-on activities across engineering disciplines, including Python programming.</li>
+            <li>ME 208, Introduction to Digital Computational Methods (Aug 2023 – May 2024): supported students through lectures, labs and assignments in C++.</li>
+          </ul>
+          <p><a href="#teaching">See teaching details →</a></p>
+        </div>
+        <div class="t-item">
+          <div class="t-head"><h3>Graduate Research Assistant</h3><span class="t-date">Aug 2025 – Dec 2025</span></div>
+          <div class="t-sub">The University of Kansas · Lawrence, KS · Part-time</div>
+          <ul>
+            <li>Research on scheduling and resource management for high-performance computing, advised by Dr. Hongyang Sun.</li>
+            <li>Co-authored a paper evaluating processor allocation strategies for online scheduling of moldable task graphs, published at IEEE HiPC 2025.</li>
+          </ul>
+        </div>
+        <div class="t-item">
+          <div class="t-head"><h3>Data Processing Specialist</h3><span class="t-date">May 2025 – Aug 2025</span></div>
+          <div class="t-sub">Kansas Geological Survey · Lawrence, KS · Part-time</div>
+          <ul>
+            <li>Processed, cleaned and managed geospatial datasets using ArcMap and ArcGIS.</li>
+          </ul>
+        </div>
+        <div class="t-item">
+          <div class="t-head"><h3>Associate Consultant</h3><span class="t-date">Apr 2018 – Jul 2022</span></div>
+          <div class="t-sub">Infosys · Hyderabad, India · Full-time</div>
+          <p>Worked on cloud infrastructure management for client applications hosted on Amazon Web Services (AWS).</p>
+          <ul>
+            <li>Provisioned, configured and maintained AWS resources such as EC2 instances, S3 storage, VPC networking and IAM access policies for production and non-production environments.</li>
+            <li>Monitored system health, resource usage and costs with Amazon CloudWatch, and resolved infrastructure incidents to keep services available.</li>
+            <li>Automated routine operations such as deployments, backups and scaling to reduce manual effort and configuration errors.</li>
+            <li>Applied security and access-control best practices, including least-privilege IAM roles and patch management.</li>
+            <li>Worked with development and operations teams to plan capacity and support releases.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="margin: 36px 0 14px; font-size: 18px;">Skills</h3>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">C / C++</span>
+        <span class="tag">Linux</span>
+        <span class="tag">Kubernetes</span>
+        <span class="tag">Skill</span>
+        <span class="tag">Skill</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TEACHING ================= -->
+  <section class="alt" id="teaching">
+    <div class="container">
+      <h2 class="section-title">Teaching Experience</h2>
+      <div class="teach-grid">
+        <!-- Copy one .teach block per course -->
+        <div class="teach">
+          <span class="course-code">EECS 138</span>
+          <h3>Introduction to Computing (Python)</h3>
+          <p>Graduate Teaching Assistant · Jan 2026 – Present. Support students learning Python through labs, assignments and grading.</p>
+        </div>
+        <div class="teach">
+          <span class="course-code">Summer Camp</span>
+          <h3>KU Engineering Summer Camp</h3>
+          <p>Graduate Teaching Assistant · Jun – Jul 2025. Guided high-school students through hands-on activities across engineering disciplines, including Python programming, to help them make informed academic and career choices.</p>
+        </div>
+        <div class="teach">
+          <span class="course-code">EECS 581</span>
+          <h3>Computer Science Capstone Project</h3>
+          <p>Graduate Teaching Assistant · Aug 2024 – May 2025 (two semesters). Oversaw student teams through the full project lifecycle using Agile methods, and graded in-class activities and project deliverables.</p>
+        </div>
+        <div class="teach">
+          <span class="course-code">ME 208</span>
+          <h3>Introduction to Digital Computational Methods</h3>
+          <p>Graduate Teaching Assistant · Aug 2023 – May 2024 (two semesters). Supported students through lectures, labs and assignments in C++ programming and computational methods.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="container">
+      <div class="socials">
+        <a href="mailto:krishnachaitanya915@ku.edu">Email</a>
+        <a href="https://www.linkedin.com/in/krishna-chaitanya-reddy-chitta-667904230" target="_blank">LinkedIn</a>
+        <a href="https://github.com/your-username" target="_blank">GitHub</a>
+      </div>
+      <p>© <span id="year"></span> Krishna Chaitanya Reddy Chitta</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => navLinks.classList.remove('open'))
+    );
+
+    // Dark mode (remembers the visitor's choice)
+    const themeToggle = document.getElementById('themeToggle');
+    function setTheme(dark) {
+      document.body.classList.toggle('dark', dark);
+      themeToggle.textContent = dark ? '☀️' : '🌙';
+    }
+    let saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    setTheme(saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
+    themeToggle.addEventListener('click', () => {
+      const dark = !document.body.classList.contains('dark');
+      setTheme(dark);
+      try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+    });
+
+    // Highlight the current section in the navbar
+    const sections = document.querySelectorAll('section[id]');
+    const links = document.querySelectorAll('.nav-links a');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + entry.target.id));
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => observer.observe(s));
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
